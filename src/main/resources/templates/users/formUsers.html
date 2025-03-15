@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Форма пользователя</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+<h1 th:text="${user.id} ? 'Редактирование пользователя' : 'Добавление пользователя'"></h1>
+
+<form th:action="@{/users/save}" th:object="${user}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+
+    <label>Имя: <input type="text" th:field="*{name}" required/></label><br>
+    <label>Email: <input type="email" th:field="*{email}" required/></label><br>
+
+    <button type="submit">Сохранить</button>
+</form>
+
+<a th:href="@{/users/list}">Назад к списку</a>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Форма продукта</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+<h1 th:text="${product.id} ? 'Редактирование продукта' : 'Добавление продукта'"></h1>
+
+<form th:action="@{/products/save}" th:object="${product}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+
+    <label>Название: <input type="text" th:field="*{name}" required/></label><br>
+    <label>Цена: <input type="number" th:field="*{price}" required/></label><br>
+
+    <button type="submit">Сохранить</button>
+</form>
+
+<a th:href="@{/products/list}">Назад к списку</a>
+</body>
+</html>
