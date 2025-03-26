@@ -1,8 +1,10 @@
 package org.example.ikm.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.DecimalMin;
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Data
@@ -18,7 +20,8 @@ public class Products {
     private String name;
 
     @Column(name = "price", nullable = false)
-    private Double price; // ? Тип данных
+    @DecimalMin("0.01")
+    private BigDecimal price;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private List<Orders> orders;

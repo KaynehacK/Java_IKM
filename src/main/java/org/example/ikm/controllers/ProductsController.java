@@ -1,5 +1,6 @@
 package org.example.ikm.controllers;
 
+import jakarta.validation.Valid;
 import org.example.ikm.models.Products;
 import org.example.ikm.services.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ public class ProductsController {
     }
 
     @PostMapping("/save")
-    public String saveProduct(@ModelAttribute Products product) {
+    public String saveProduct(@Valid @ModelAttribute Products product) {
         productsService.save(product);
         return "redirect:/products/list";
     }

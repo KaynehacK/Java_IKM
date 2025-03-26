@@ -1,5 +1,6 @@
 package org.example.ikm.controllers;
 
+import jakarta.validation.Valid;
 import org.example.ikm.models.*;
 import org.example.ikm.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,7 @@ public class OrdersController {
     }
 
     @PostMapping("/save")
-    public String saveOrder(@ModelAttribute Orders order) {
+    public String saveOrder(@Valid @ModelAttribute Orders order) {
         ordersService.save(order);
         return "redirect:/orders/list";
     }

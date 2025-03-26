@@ -1,6 +1,7 @@
 package org.example.ikm.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import lombok.Data;
 
 @Data
@@ -21,5 +22,6 @@ public class Orders {
     private Products product;
 
     @Column(name = "quantity")
-    private Integer quantity; // ? Тип данных
+    @Min(1)
+    private Integer quantity;
 }
