@@ -44,6 +44,7 @@ public class OrdersController {
 
     @PostMapping("/save")
     public String saveOrder(@Valid @ModelAttribute Orders order) {
+        if (order.getUser() == null || order.getProduct() == null) {return "redirect:/orders/list";}
         ordersService.save(order);
         return "redirect:/orders/list";
     }
